@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }))
 app.post('/api/register', upload.single('image'), async (req, res) => {
     let { name, username, age, email, password } = req.body
     let user = await userModel.findOne({ email })
-
+    
     //User Already Exists
     if (user) {
         return res.status(409).send(
